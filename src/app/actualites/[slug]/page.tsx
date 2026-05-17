@@ -85,7 +85,6 @@ export default async function ArticlePage({ params }: Props) {
           </h1>
           <div className="mt-5 flex flex-wrap items-center gap-3">
             <p className="text-sm font-medium text-[var(--muted)]">{article.date}</p>
-            <ShareButton title={article.title} text={article.excerpt} compact />
           </div>
         </div>
         <div className="relative mt-10 h-[320px] overflow-hidden rounded-[2rem] shadow-2xl shadow-rose-950/10 md:h-[480px]">

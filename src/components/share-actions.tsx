@@ -69,17 +69,6 @@ export function ShareButton({
         <span>{copied ? "Lien copié" : "Partager"}</span>
       </button>
 
-      <button
-        type="button"
-        aria-label="Ouvrir les options de partage"
-        onClick={() => setOpen((value) => !value)}
-        className={`ml-1 grid place-items-center rounded-full border border-[var(--line)] bg-white font-semibold text-[var(--muted)] shadow-sm active:scale-[0.98] ${
-          compact ? "size-9 text-xs" : "size-11 text-sm"
-        }`}
-      >
-        ⋯
-      </button>
-
       {open && (
         <>
           <button
