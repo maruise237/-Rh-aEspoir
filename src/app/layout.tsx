@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { JsonLd } from "@/components/json-ld";
 import { organizationJsonLd, seoKeywords, siteUrl, websiteJsonLd } from "@/lib/seo";
@@ -65,6 +66,11 @@ export default function RootLayout({
     <html lang="fr">
       <body>
         {children}
+        <Script
+          src="https://umami.kamtech.online/script.js"
+          data-website-id="c326caeb-35fa-4ace-9b4c-887f9f813657"
+          strategy="afterInteractive"
+        />
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={websiteJsonLd()} />
       </body>
