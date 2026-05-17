@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fff9f5;
+  --foreground: #243331;
+  --muted: #64716f;
+  --rose: #b75d69;
+  --teal: #236b64;
+  --cream: #fff3eb;
+  --line: #eadbd4;
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a,
+button {
+  transition: color 200ms ease, background-color 200ms ease, border-color 200ms ease,
+    transform 420ms var(--ease-out-soft), opacity 420ms var(--ease-out-soft);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgba(35, 107, 100, 0.35);
+  outline-offset: 4px;
+}
+
+.soft-noise {
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(183, 93, 105, 0.12), transparent 26rem),
+    radial-gradient(circle at 85% 8%, rgba(35, 107, 100, 0.14), transparent 30rem),
+    linear-gradient(180deg, #fff9f5 0%, #fff2ec 55%, #f8fbf8 100%);
+}
+
+.section-shell {
+  width: min(1220px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.balanced {
+  text-wrap: balance;
+}
+
+.premium-shell {
+  border: 1px solid rgba(234, 219, 212, 0.9);
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: 0 24px 80px rgba(79, 45, 42, 0.08);
+}
+
+.premium-core {
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: rgba(255, 249, 245, 0.86);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.reveal {
+  animation: fade-up 820ms var(--ease-out-soft) both;
+}
+
+.reveal-delay-1 {
+  animation-delay: 90ms;
+}
+
+.reveal-delay-2 {
+  animation-delay: 180ms;
+}
+
+.reveal-delay-3 {
+  animation-delay: 270ms;
+}
+
+.soft-float {
+  animation: soft-float 8s var(--ease-out-soft) infinite alternate;
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0, 44px, 0) scale(0.985);
+  transition:
+    opacity 860ms var(--ease-out-soft) var(--reveal-delay, 0ms),
+    transform 860ms var(--ease-out-soft) var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+img.scroll-reveal {
+  transform: translate3d(0, 28px, 0) scale(1.018);
+}
+
+img.scroll-reveal.is-visible {
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes soft-float {
+  from {
+    transform: translate3d(0, 0, 0) rotate(-0.4deg);
+  }
+  to {
+    transform: translate3d(0, -12px, 0) rotate(0.5deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+
+  .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
