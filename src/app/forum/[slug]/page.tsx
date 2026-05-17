@@ -62,7 +62,7 @@ export default async function ForumTopicPage({ params }: Props) {
       />
       <section className="section-shell py-16">
         <Eyebrow>Forum en lecture seule</Eyebrow>
-        <h1 className="balanced mt-4 max-w-4xl text-5xl font-semibold leading-tight tracking-tight md:text-6xl">
+        <h1 className="balanced mt-4 max-w-4xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl">
           {topic.title}
         </h1>
         <div className="mt-10 grid gap-5">

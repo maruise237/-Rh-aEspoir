@@ -92,7 +92,7 @@ button:focus-visible {
   animation: soft-float 8s var(--ease-out-soft) infinite alternate;
 }
 
-.scroll-reveal {
+.reveal-on-scroll.scroll-reveal {
   opacity: 1;
   transform: translate3d(0, 44px, 0) scale(0.985);
   transition:
@@ -101,20 +101,20 @@ button:focus-visible {
   will-change: opacity, transform;
 }
 
-.js .scroll-reveal {
+.js .reveal-on-scroll.scroll-reveal {
   opacity: 0;
 }
 
-.scroll-reveal.is-visible {
+.reveal-on-scroll.scroll-reveal.is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
 }
 
-img.scroll-reveal {
+.reveal-on-scroll.scroll-reveal img {
   transform: translate3d(0, 28px, 0) scale(1.018);
 }
 
-img.scroll-reveal.is-visible {
+.reveal-on-scroll.scroll-reveal.is-visible img {
   transform: translate3d(0, 0, 0) scale(1);
 }
 
@@ -148,7 +148,7 @@ img.scroll-reveal.is-visible {
     transition-duration: 1ms !important;
   }
 
-  .scroll-reveal {
+  .reveal-on-scroll.scroll-reveal {
     opacity: 1 !important;
     transform: none !important;
   }

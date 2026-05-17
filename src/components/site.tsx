@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ActiveNavLink } from "@/components/active-nav-link";
 import { donationUrl, navItems, phones, visuals, whatsappUrl } from "@/lib/data";
 import { MobileMenu } from "@/components/mobile-menu";
 import { ScrollAnimator } from "@/components/scroll-animator";
@@ -24,13 +25,14 @@ export function Header() {
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Navigation principale">
           {navItems.map((item) => (
-            <Link
+            <ActiveNavLink
               key={item.href}
               href={item.href}
               className="rounded-full px-4 py-2 text-sm font-medium text-[var(--muted)] hover:bg-white hover:text-[var(--teal)]"
+              activeClassName="bg-white text-[var(--teal)] shadow-sm ring-1 ring-[var(--line)]"
             >
               {item.label}
-            </Link>
+            </ActiveNavLink>
           ))}
         </nav>
 
@@ -155,7 +157,7 @@ export function ButtonLink({
 
 export function HeroImage({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="premium-shell soft-float relative min-h-[420px] overflow-hidden rounded-[2rem] p-2 md:min-h-[560px]">
+    <div className="premium-shell soft-float reveal-on-scroll relative min-h-[420px] overflow-hidden rounded-[2rem] p-2 md:min-h-[560px]">
       <div className="relative h-full min-h-[404px] overflow-hidden rounded-[calc(2rem-0.5rem)] md:min-h-[544px]">
         <Image src={src} alt={alt} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" priority />
         <div className="absolute inset-0 bg-gradient-to-t from-[#183d39]/52 via-transparent to-white/10" />

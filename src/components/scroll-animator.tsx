@@ -8,7 +8,7 @@ export function ScrollAnimator() {
 
     const targets = Array.from(
       document.querySelectorAll<HTMLElement>(
-        "main > section, main article, main .premium-shell, main a.group, main img",
+        ".reveal-on-scroll",
       ),
     );
 

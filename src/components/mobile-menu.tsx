@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { ActiveNavLink } from "@/components/active-nav-link";
 import { donationUrl, navItems, whatsappUrl } from "@/lib/data";
 
 export function MobileMenu() {
@@ -42,15 +43,16 @@ export function MobileMenu() {
               aria-label="Navigation mobile"
             >
               {navItems.map((item, index) => (
-                <Link
+                <ActiveNavLink
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
                   style={{ animationDelay: `${index * 55}ms` }}
                   className="reveal rounded-2xl px-4 py-3 text-lg font-semibold tracking-tight text-[var(--foreground)] hover:bg-white"
+                  activeClassName="bg-white text-[var(--teal)] ring-1 ring-[var(--line)]"
                 >
                   {item.label}
-                </Link>
+                </ActiveNavLink>
               ))}
               <div className="mt-2 grid gap-2 sm:grid-cols-2">
                 <Link

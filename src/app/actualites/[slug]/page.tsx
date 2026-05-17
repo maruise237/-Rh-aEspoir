@@ -80,7 +80,7 @@ export default async function ArticlePage({ params }: Props) {
       <article className="section-shell py-16">
         <div className="max-w-3xl">
           <Eyebrow>{article.category}</Eyebrow>
-          <h1 className="balanced mt-4 text-5xl font-semibold leading-tight tracking-tight md:text-6xl">
+          <h1 className="balanced mt-4 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl">
             {article.title}
           </h1>
           <div className="mt-5 flex flex-wrap items-center gap-3">

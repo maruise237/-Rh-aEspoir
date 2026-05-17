@@ -76,7 +76,7 @@ export function ShareButton({
       <span className="grid size-7 place-items-center rounded-full bg-[#f4fbf8] text-[var(--teal)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
         ↗
       </span>
-      <span>{busy ? "Partage..." : copied ? "Lien copié" : "Partager"}</span>
+      <span aria-live="polite">{busy ? "Partage..." : copied ? "Lien copié" : "Partager"}</span>
     </button>
   );
 }

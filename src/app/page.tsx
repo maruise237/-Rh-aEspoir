@@ -21,7 +21,7 @@ export default function Home() {
       <section className="section-shell grid gap-12 py-16 md:py-24 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
         <div className="reveal">
           <Eyebrow>Association RhéaEspoir</Eyebrow>
-          <h1 className="balanced mt-5 max-w-4xl text-5xl font-semibold leading-[1.02] tracking-tight text-[var(--foreground)] md:text-7xl">
+          <h1 className="balanced mt-5 max-w-4xl text-4xl font-semibold leading-[1.04] tracking-tight text-[var(--foreground)] sm:text-5xl md:text-7xl">
             Ne plus traverser l'infertilité dans le silence.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
@@ -124,7 +124,7 @@ export default function Home() {
 
       <section className="section-shell grid gap-10 py-20 md:py-28 lg:grid-cols-[1fr_0.82fr] lg:items-center">
         <div className="reveal">
-          <Eyebrow>Choix d'architecte</Eyebrow>
+          <Eyebrow>Notre approche</Eyebrow>
           <h2 className="balanced mt-4 text-4xl font-semibold tracking-tight md:text-5xl">
             Un site plus rassurant parce qu'il explique clairement ses limites.
           </h2>
@@ -212,7 +212,7 @@ export default function Home() {
             <ButtonLink href="/actualites" variant="secondary">Voir les articles</ButtonLink>
           </div>
           <div className="mt-10 grid gap-5 md:grid-cols-[1.2fr_0.9fr_0.9fr]">
-            {articles.map((article, index) => (
+            {articles.slice(0, 3).map((article, index) => (
               <Link key={article.slug} href={`/actualites/${article.slug}`} className={`group reveal reveal-delay-${index + 1} overflow-hidden rounded-3xl bg-white text-[var(--foreground)] ${index === 0 ? "md:row-span-2" : ""}`}>
                 <div className="relative h-48 overflow-hidden">
                   <Image src={article.image} alt={article.imageAlt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-300 group-hover:scale-105" />

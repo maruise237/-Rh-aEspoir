@@ -18,7 +18,7 @@ export default function AboutPage() {
       <section className="section-shell grid gap-10 py-16 md:py-24 lg:grid-cols-[0.9fr_1fr] lg:items-center">
         <div className="reveal">
           <Eyebrow>Qui sommes-nous</Eyebrow>
-          <h1 className="balanced mt-4 text-5xl font-semibold leading-tight tracking-tight md:text-6xl">
+          <h1 className="balanced mt-4 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl">
             Une association née pour rompre l'isolement autour de l'infertilité.
           </h1>
           <p className="mt-6 text-lg leading-8 text-[var(--muted)]">

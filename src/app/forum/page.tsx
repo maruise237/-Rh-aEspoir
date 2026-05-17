@@ -17,7 +17,7 @@ export default function ForumPage() {
     <PageFrame>
       <section className="section-shell py-16">
         <Eyebrow>Forum vitrine</Eyebrow>
-        <h1 className="balanced mt-4 max-w-4xl text-5xl font-semibold leading-tight tracking-tight md:text-6xl">
+        <h1 className="balanced mt-4 max-w-4xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl">
           Un espace communautaire archivé, prêt pour une future V2 interactive.
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-8 text-[var(--muted)]">

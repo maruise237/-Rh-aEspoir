@@ -73,7 +73,7 @@ export default async function EventPage({ params }: Props) {
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1fr] lg:items-center">
           <div>
             <Eyebrow>Événement</Eyebrow>
-            <h1 className="balanced mt-4 text-5xl font-semibold leading-tight tracking-tight md:text-6xl">
+            <h1 className="balanced mt-4 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl md:text-6xl">
               {event.title}
             </h1>
             <p className="mt-5 font-semibold text-[var(--rose)]">{event.date} · {event.place}</p>

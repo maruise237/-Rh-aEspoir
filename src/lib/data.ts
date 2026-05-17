@@ -256,7 +256,7 @@ export const articles: Article[] = [
       "Quand consulter, quels examens demander et comment préparer un premier bilan de fertilité pour le couple au Cameroun.",
     date: "12 mars 2025",
     category: "Diagnostic",
-    image: "/images/rhea/articles/bilan-fertilite-couple.png",
+    image: "/images/rhea/articles/bilan-fertilite-couple.jpg",
     imageAlt: "Illustration d'un bilan de fertilité du couple avec dossier médical et accompagnement",
     body: [
       "Le bilan de fertilité est souvent le premier vrai moment de clarté après des mois ou des années d'attente. Il ne sert pas à désigner un coupable, mais à comprendre ce qui bloque ou ralentit le projet de grossesse. L'infertilité peut venir de la femme, de l'homme, des deux partenaires ou rester inexpliquée malgré les examens.",
@@ -284,7 +284,7 @@ export const articles: Article[] = [
       "La fertilité masculine compte autant que la fertilité féminine : spermogramme, facteurs de risque, hygiène de vie et prise en charge.",
     date: "27 mars 2025",
     category: "Fertilité masculine",
-    image: "/images/rhea/articles/infertilite-masculine-spermogramme.png",
+    image: "/images/rhea/articles/infertilite-masculine-spermogramme.jpg",
     imageAlt: "Illustration d'un spermogramme et d'une analyse de fertilité masculine",
     body: [
       "L'infertilité masculine reste entourée de beaucoup de silence. Pourtant, elle peut contribuer à une difficulté de conception et doit être explorée dès le début du bilan. En parler ne diminue pas la valeur d'un homme : cela permet au couple de gagner du temps et de choisir une prise en charge adaptée.",
@@ -312,7 +312,7 @@ export const articles: Article[] = [
       "Douleurs pelviennes, règles très douloureuses, rapports douloureux : comprendre le lien possible entre endométriose et fertilité.",
     date: "8 avril 2025",
     category: "Santé féminine",
-    image: "/images/rhea/articles/endometriose-infertilite.png",
+    image: "/images/rhea/articles/endometriose-infertilite.jpg",
     imageAlt: "Illustration de l'endométriose et de son impact possible sur la fertilité",
     body: [
       "L'endométriose est une maladie qui peut provoquer des douleurs importantes et affecter la fertilité. Beaucoup de femmes entendent pendant des années que les règles douloureuses sont normales. Pourtant, une douleur qui empêche de travailler, d'étudier, de dormir ou d'avoir une vie intime sereine mérite une consultation.",
@@ -340,7 +340,7 @@ export const articles: Article[] = [
       "Comprendre l'infertilité inexpliquée, éviter la culpabilité et organiser les prochaines étapes avec un spécialiste.",
     date: "23 avril 2025",
     category: "Parcours",
-    image: "/images/rhea/articles/infertilite-inexpliquee.png",
+    image: "/images/rhea/articles/infertilite-inexpliquee.jpg",
     imageAlt: "Illustration d'un parcours d'infertilité inexpliquée avec point d'interrogation et chemins médicaux",
     body: [
       "L'infertilité inexpliquée est l'une des situations les plus frustrantes pour un couple. Les examens semblent rassurants, mais la grossesse n'arrive pas. Cette absence de réponse claire peut donner l'impression d'être bloqué entre espoir et incompréhension.",
@@ -368,7 +368,7 @@ export const articles: Article[] = [
       "Une checklist claire pour préparer un rendez-vous de PMA ou de FIV : examens, coûts, délais, risques et accompagnement émotionnel.",
     date: "7 mai 2025",
     category: "PMA",
-    image: "/images/rhea/articles/preparer-consultation-pma-fiv.png",
+    image: "/images/rhea/articles/preparer-consultation-pma-fiv.jpg",
     imageAlt: "Illustration d'une checklist de consultation PMA ou FIV avec embryon stylisé",
     body: [
       "Une consultation de PMA peut impressionner. Les mots sont techniques, les décisions importantes et le budget parfois lourd. Bien se préparer permet d'arriver avec plus de calme et de repartir avec des réponses utiles.",
