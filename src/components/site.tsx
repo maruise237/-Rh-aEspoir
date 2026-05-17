@@ -4,6 +4,7 @@ import { ActiveNavLink } from "@/components/active-nav-link";
 import { donationUrl, navItems, phones, visuals, whatsappUrl } from "@/lib/data";
 import { MobileMenu } from "@/components/mobile-menu";
 import { ScrollAnimator } from "@/components/scroll-animator";
+import { BackToTop } from "@/components/back-to-top";
 
 export function Header() {
   return (
@@ -120,6 +121,7 @@ export function PageFrame({ children }: { children: React.ReactNode }) {
       <main>{children}</main>
       <Footer />
       <ScrollAnimator />
+      <BackToTop />
     </div>
   );
 }
