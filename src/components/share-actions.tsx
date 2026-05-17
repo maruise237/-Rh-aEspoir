@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 
 type ShareButtonProps = {
   title?: string;
@@ -18,6 +18,7 @@ export function ShareButton({
   compact = false,
 }: ShareButtonProps) {
   const pathname = usePathname();
+  const menuId = useId();
   const [copied, setCopied] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -30,21 +31,44 @@ export function ShareButton({
   const encodedText = encodeURIComponent(`${text} ${shareUrl}`);
   const encodedTitle = encodeURIComponent(title);
 
-  async function handleShare() {
+  useEffect(() => {
+    if (!open) return;
+
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") setOpen(false);
+    }
+
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [open]);
+
+  async function nativeShare() {
     try {
-      if (navigator.share) {
+      if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
         await navigator.share({ title, text, url: shareUrl });
+        setOpen(false);
       } else {
-        setOpen(true);
+        await copyLink();
       }
     } catch {
-      setOpen(true);
+      await copyLink();
     }
   }
 
   async function copyLink() {
-    if (navigator.clipboard) {
+    try {
       await navigator.clipboard.writeText(shareUrl);
+    } catch {
+      const field = document.createElement("textarea");
+      field.value = shareUrl;
+      field.setAttribute("readonly", "");
+      field.style.position = "fixed";
+      field.style.opacity = "0";
+      document.body.appendChild(field);
+      field.select();
+      document.execCommand("copy");
+      document.body.removeChild(field);
+    } finally {
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1800);
     }
@@ -54,11 +78,9 @@ export function ShareButton({
     <span className="relative inline-flex">
       <button
         type="button"
-        onClick={handleShare}
-        onContextMenu={(event) => {
-          event.preventDefault();
-          setOpen(true);
-        }}
+        aria-expanded={open}
+        aria-controls={menuId}
+        onClick={() => setOpen((value) => !value)}
         className={`group inline-flex items-center justify-center gap-2 rounded-full border border-[var(--line)] bg-white font-semibold text-[var(--foreground)] shadow-sm active:scale-[0.98] ${
           compact ? "px-3 py-2 text-xs" : "px-5 py-3 text-sm"
         } ${className}`}
@@ -77,12 +99,23 @@ export function ShareButton({
             className="fixed inset-0 z-40 cursor-default bg-transparent"
             onClick={() => setOpen(false)}
           />
-          <div className="absolute right-0 top-[calc(100%+0.6rem)] z-50 w-[min(88vw,320px)] overflow-hidden rounded-[1.75rem] border border-white/70 bg-[#fff9f5]/96 p-2 shadow-2xl shadow-rose-950/18 backdrop-blur-xl">
+          <div
+            id={menuId}
+            className="absolute right-0 top-[calc(100%+0.6rem)] z-50 w-[min(88vw,340px)] overflow-hidden rounded-[1.75rem] border border-white/70 bg-[#fff9f5]/96 p-2 shadow-2xl shadow-rose-950/18 backdrop-blur-xl"
+          >
             <div className="premium-core rounded-[calc(1.75rem-0.5rem)] p-3">
               <p className="px-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--rose)]">
-                Partager cette page
+                Partager l'article
               </p>
               <div className="mt-3 grid gap-2">
+                <button
+                  type="button"
+                  onClick={nativeShare}
+                  className="flex items-center justify-between rounded-2xl bg-[var(--teal)] px-4 py-3 text-left text-sm font-semibold text-white"
+                >
+                  {copied ? "Lien copié" : "Partage rapide"}
+                  <span className="text-white/80">↗</span>
+                </button>
                 <button
                   type="button"
                   onClick={copyLink}
@@ -94,6 +127,8 @@ export function ShareButton({
                 <Link
                   href={`https://wa.me/?text=${encodedText}`}
                   target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setOpen(false)}
                   className="flex items-center justify-between rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-[var(--foreground)] ring-1 ring-[var(--line)]"
                 >
                   WhatsApp
@@ -102,6 +137,8 @@ export function ShareButton({
                 <Link
                   href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
                   target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setOpen(false)}
                   className="flex items-center justify-between rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-[var(--foreground)] ring-1 ring-[var(--line)]"
                 >
                   Facebook
@@ -109,6 +146,7 @@ export function ShareButton({
                 </Link>
                 <Link
                   href={`mailto:?subject=${encodedTitle}&body=${encodedText}`}
+                  onClick={() => setOpen(false)}
                   className="flex items-center justify-between rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-[var(--foreground)] ring-1 ring-[var(--line)]"
                 >
                   Email
