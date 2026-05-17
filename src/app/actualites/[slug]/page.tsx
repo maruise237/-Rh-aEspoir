@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/json-ld";
 import { ShareButton } from "@/components/share-actions";
@@ -87,7 +88,9 @@ export default async function ArticlePage({ params }: Props) {
             <ShareButton title={article.title} text={article.excerpt} compact />
           </div>
         </div>
-        <img src={article.image} alt={article.imageAlt} className="mt-10 h-[480px] w-full rounded-[2rem] object-cover shadow-2xl shadow-rose-950/10" />
+        <div className="relative mt-10 h-[320px] overflow-hidden rounded-[2rem] shadow-2xl shadow-rose-950/10 md:h-[480px]">
+          <Image src={article.image} alt={article.imageAlt} fill sizes="(max-width: 768px) 100vw, 1220px" className="object-cover" priority />
+        </div>
         <div className="mx-auto mt-12 max-w-3xl space-y-6 text-lg leading-9 text-[var(--muted)]">
           {article.body.map((paragraph) => (
             paragraph.startsWith("## ") ? (

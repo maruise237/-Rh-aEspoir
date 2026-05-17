@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ButtonLink, Eyebrow, HeroImage, PageFrame } from "@/components/site";
 import {
   architectNotes,
@@ -77,7 +78,9 @@ export default function Home() {
 
       <section className="section-shell grid gap-12 py-20 md:py-28 lg:grid-cols-[0.95fr_1fr] lg:items-center">
         <div className="premium-shell reveal overflow-hidden rounded-[2rem] p-2">
-          <img src={visuals.support} alt="Illustration RhéaEspoir autour du soutien" className="h-[460px] w-full rounded-[calc(2rem-0.5rem)] object-cover" />
+          <div className="relative h-[460px] overflow-hidden rounded-[calc(2rem-0.5rem)]">
+            <Image src={visuals.support} alt="Illustration RhéaEspoir autour du soutien" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+          </div>
         </div>
         <div className="reveal reveal-delay-1">
           <Eyebrow>Accompagnement humain</Eyebrow>
@@ -211,7 +214,9 @@ export default function Home() {
           <div className="mt-10 grid gap-5 md:grid-cols-[1.2fr_0.9fr_0.9fr]">
             {articles.map((article, index) => (
               <Link key={article.slug} href={`/actualites/${article.slug}`} className={`group reveal reveal-delay-${index + 1} overflow-hidden rounded-3xl bg-white text-[var(--foreground)] ${index === 0 ? "md:row-span-2" : ""}`}>
-                <img src={article.image} alt={article.imageAlt} className="h-48 w-full object-cover transition duration-300 group-hover:scale-105" />
+                <div className="relative h-48 overflow-hidden">
+                  <Image src={article.image} alt={article.imageAlt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-300 group-hover:scale-105" />
+                </div>
                 <div className="p-6">
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--rose)]">
                     {article.category}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Eyebrow, PageFrame } from "@/components/site";
 import { events } from "@/lib/data";
 
@@ -23,7 +24,9 @@ export default function EventsPage() {
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {events.map((event) => (
             <Link key={event.slug} href={`/evenements/${event.slug}`} className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-[var(--line)]">
-              <img src={event.image} alt="" className="h-72 w-full object-cover transition duration-300 group-hover:scale-105" />
+              <div className="relative h-72 overflow-hidden">
+                <Image src={event.image} alt={event.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition duration-300 group-hover:scale-105" />
+              </div>
               <div className="p-7">
                 <p className="text-sm font-semibold text-[var(--rose)]">{event.date} · {event.place}</p>
                 <h2 className="mt-3 text-2xl font-semibold tracking-tight">{event.title}</h2>

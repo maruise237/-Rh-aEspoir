@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ButtonLink, Eyebrow, PageFrame } from "@/components/site";
 import { contact, donationUrl, phones, visuals, whatsappUrl } from "@/lib/data";
 
@@ -32,7 +33,9 @@ export default function ContactPage() {
           </div>
         </div>
         <div className="premium-shell reveal reveal-delay-1 rounded-[2rem] p-2">
-          <img src={visuals.calm} alt="Moment calme d'écoute et d'accompagnement" className="h-[500px] w-full rounded-[calc(2rem-0.5rem)] object-cover" />
+          <div className="relative h-[420px] overflow-hidden rounded-[calc(2rem-0.5rem)] md:h-[500px]">
+            <Image src={visuals.calm} alt="Moment calme d'écoute et d'accompagnement" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+          </div>
         </div>
       </section>
 

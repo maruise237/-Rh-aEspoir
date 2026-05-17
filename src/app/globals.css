@@ -93,12 +93,16 @@ button:focus-visible {
 }
 
 .scroll-reveal {
-  opacity: 0;
+  opacity: 1;
   transform: translate3d(0, 44px, 0) scale(0.985);
   transition:
     opacity 860ms var(--ease-out-soft) var(--reveal-delay, 0ms),
     transform 860ms var(--ease-out-soft) var(--reveal-delay, 0ms);
   will-change: opacity, transform;
+}
+
+.js .scroll-reveal {
+  opacity: 0;
 }
 
 .scroll-reveal.is-visible {

@@ -15,7 +15,16 @@ export function ScrollAnimator() {
     targets.forEach((element, index) => {
       element.classList.add("scroll-reveal");
       element.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * 55}ms`);
+
+      const rect = element.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 1.08) {
+        element.classList.add("is-visible");
+      }
     });
+
+    const fallback = window.setTimeout(() => {
+      targets.forEach((element) => element.classList.add("is-visible"));
+    }, 1600);
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -34,7 +43,10 @@ export function ScrollAnimator() {
 
     targets.forEach((element) => observer.observe(element));
 
-    return () => observer.disconnect();
+    return () => {
+      window.clearTimeout(fallback);
+      observer.disconnect();
+    };
   }, []);
 
   return null;

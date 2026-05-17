@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { donationUrl, navItems, phones, visuals, whatsappUrl } from "@/lib/data";
 import { MobileMenu } from "@/components/mobile-menu";
 import { ScrollAnimator } from "@/components/scroll-animator";
@@ -9,7 +10,7 @@ export function Header() {
       <div className="section-shell flex min-h-20 items-center justify-between gap-4">
         <Link href="/" className="group flex items-center gap-3" aria-label="RhéaEspoir accueil">
           <span className="grid size-12 place-items-center overflow-hidden rounded-2xl bg-white shadow-lg shadow-teal-900/10 ring-1 ring-[var(--line)]">
-            <img src={visuals.logo} alt="" className="h-full w-full object-contain p-1" />
+            <Image src={visuals.logo} alt="" width={48} height={48} className="h-full w-full object-contain p-1" />
           </span>
           <span className="leading-tight">
             <span className="block text-lg font-semibold tracking-tight text-[var(--foreground)]">
@@ -92,8 +93,19 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <div className="section-shell border-t border-white/10 py-5 text-xs text-white/50">
-        © 2026 RhéaEspoir. Version reconstruite pour Vercel.
+      <div className="section-shell flex flex-col gap-3 border-t border-white/10 py-5 text-xs text-white/58 sm:flex-row sm:items-center sm:justify-between">
+        <p>© 2026 RhéaEspoir. Tous droits réservés.</p>
+        <p>
+          Conception et développement par{" "}
+          <Link
+            href="https://kamtech.online"
+            target="_blank"
+            rel="noreferrer"
+            className="font-semibold text-white underline decoration-white/25 underline-offset-4 hover:text-white/82"
+          >
+            Kamtech
+          </Link>
+        </p>
       </div>
     </footer>
   );
@@ -101,7 +113,7 @@ export function Footer() {
 
 export function PageFrame({ children }: { children: React.ReactNode }) {
   return (
-    <div className="soft-noise min-h-screen">
+    <div className="soft-noise js min-h-screen overflow-x-hidden">
       <Header />
       <main>{children}</main>
       <Footer />
@@ -145,7 +157,7 @@ export function HeroImage({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="premium-shell soft-float relative min-h-[420px] overflow-hidden rounded-[2rem] p-2 md:min-h-[560px]">
       <div className="relative h-full min-h-[404px] overflow-hidden rounded-[calc(2rem-0.5rem)] md:min-h-[544px]">
-        <img src={src} alt={alt} className="absolute inset-0 h-full w-full object-cover" />
+        <Image src={src} alt={alt} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" priority />
         <div className="absolute inset-0 bg-gradient-to-t from-[#183d39]/52 via-transparent to-white/10" />
         <div className="absolute bottom-5 left-5 max-w-xs rounded-3xl bg-white/88 p-5 shadow-2xl shadow-teal-950/10 backdrop-blur-xl">
           <p className="text-sm font-semibold text-[var(--teal)]">Soutien et espoir</p>

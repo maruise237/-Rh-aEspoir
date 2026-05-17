@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Eyebrow, PageFrame } from "@/components/site";
 import { articles } from "@/lib/data";
 
@@ -28,7 +29,9 @@ export default function NewsPage() {
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {articles.map((article) => (
             <Link key={article.slug} href={`/actualites/${article.slug}`} className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-[var(--line)]">
-              <img src={article.image} alt={article.imageAlt} className="h-56 w-full object-cover transition duration-300 group-hover:scale-105" />
+              <div className="relative h-56 overflow-hidden">
+                <Image src={article.image} alt={article.imageAlt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-300 group-hover:scale-105" />
+              </div>
               <div className="p-6">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--rose)]">
                   {article.category} · {article.date}

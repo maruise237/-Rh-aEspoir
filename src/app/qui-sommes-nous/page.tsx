@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ButtonLink, Eyebrow, PageFrame } from "@/components/site";
 import { architectNotes, values, visuals, whatsappUrl } from "@/lib/data";
 
@@ -36,7 +37,9 @@ export default function AboutPage() {
           </div>
         </div>
         <div className="premium-shell reveal reveal-delay-1 overflow-hidden rounded-[2rem] p-2">
-          <img src={visuals.care} alt="Professionnels de santé et accompagnement" className="h-[520px] w-full rounded-[calc(2rem-0.5rem)] object-cover" />
+          <div className="relative h-[420px] overflow-hidden rounded-[calc(2rem-0.5rem)] md:h-[520px]">
+            <Image src={visuals.care} alt="Professionnels de santé et accompagnement" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+          </div>
         </div>
       </section>
 
